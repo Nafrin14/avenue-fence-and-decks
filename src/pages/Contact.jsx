@@ -9,7 +9,7 @@ const infoItems = [
       </svg>
     ),
     label: 'Call Us',
-    value: '(555) 123-4567',
+    value: '(716) 466-1330',
     sub: 'Mon – Sat, 8am – 6pm',
   },
   {
@@ -20,7 +20,7 @@ const infoItems = [
       </svg>
     ),
     label: 'Email Us',
-    value: 'hello@avenue.com',
+    value: 'kdlandscapingny@gmail.com',
     sub: 'We reply within 24 hours',
   },
   {
@@ -33,8 +33,8 @@ const infoItems = [
       </svg>
     ),
     label: 'Visit Us',
-    value: '123 Sunshine Blvd',
-    sub: 'New York, NY 10001',
+    value: '9950 County Rd',
+    sub: 'Clarence, Buffalo, NY',
   },
 ];
 

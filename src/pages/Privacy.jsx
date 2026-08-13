@@ -51,8 +51,8 @@ const sections = [
           <p className="font-bold text-gray-700 mb-1">2f. How to Get Help (HELP)</p>
           <p className="mb-2">For help with our SMS program, reply <strong>HELP</strong> to any message, or contact us directly at:</p>
           <ul className="list-none space-y-1 text-gray-500">
-            <li>Phone: (555) 123-4567</li>
-            <li>Email: hello@avenue.com</li>
+            <li>Phone: (716) 466-1330</li>
+            <li>Email: kdlandscapingny@gmail.com</li>
           </ul>
         </div>
       </div>
@@ -113,7 +113,7 @@ const sections = [
           <li><strong>Opt-Out of SMS:</strong> Reply STOP to any text message at any time</li>
           <li><strong>Opt-Out of Marketing:</strong> Contact us directly to be removed from marketing lists</li>
         </ul>
-        <p>To exercise any of these rights, contact us at <a href="mailto:hello@avenue.com" className="text-pink-500 hover:text-pink-600">hello@avenue.com</a> or call (555) 123-4567.</p>
+        <p>To exercise any of these rights, contact us at <a href="mailto:kdlandscapingny@gmail.com" className="text-pink-500 hover:text-pink-600">kdlandscapingny@gmail.com</a> or call (716) 466-1330.</p>
       </>
     ),
   },
@@ -130,9 +130,9 @@ const sections = [
         <p className="mb-3">If you have questions or concerns about this Privacy Policy, please contact us:</p>
         <ul className="list-none space-y-1 text-gray-500">
           <li><strong>Company:</strong> Avenue Fence and Decks</li>
-          <li><strong>Address:</strong> 123 Sunshine Blvd, New York, NY 10001</li>
-          <li><strong>Phone:</strong> (555) 123-4567</li>
-          <li><strong>Email:</strong> <a href="mailto:hello@avenue.com" className="text-pink-500 hover:text-pink-600">hello@avenue.com</a></li>
+          <li><strong>Address:</strong> 9950 County Rd, Clarence, Buffalo, NY</li>
+          <li><strong>Phone:</strong> (716) 466-1330</li>
+          <li><strong>Email:</strong> <a href="mailto:kdlandscapingny@gmail.com" className="text-pink-500 hover:text-pink-600">kdlandscapingny@gmail.com</a></li>
         </ul>
       </>
     ),

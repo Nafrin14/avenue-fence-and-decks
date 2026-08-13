@@ -4,7 +4,7 @@ const sections = [
   {
     title: '1. Business Identity',
     content: (
-      <p>These Terms and Conditions govern your use of the services provided by Avenue Fence and Decks, located at 123 Sunshine Blvd, New York, NY 10001. Contact: (555) 123-4567 | hello@avenue.com.</p>
+      <p>These Terms and Conditions govern your use of the services provided by Avenue Fence and Decks, located at 9950 County Rd, Clarence, Buffalo, NY. Contact: (716) 466-1330 | kdlandscapingny@gmail.com.</p>
     ),
   },
   {
@@ -49,8 +49,8 @@ const sections = [
           <p className="font-bold text-gray-700 mb-1">4e. How to Get Help (HELP)</p>
           <p className="mb-2">For help with our SMS program, reply <strong>HELP</strong> to any message or contact us directly at:</p>
           <ul className="list-none space-y-1 text-gray-500">
-            <li>Phone: (555) 123-4567</li>
-            <li>Email: <a href="mailto:hello@avenue.com" className="text-pink-500 hover:text-pink-600">hello@avenue.com</a></li>
+            <li>Phone: (716) 466-1330</li>
+            <li>Email: <a href="mailto:kdlandscapingny@gmail.com" className="text-pink-500 hover:text-pink-600">kdlandscapingny@gmail.com</a></li>
           </ul>
         </div>
         <div>
@@ -107,9 +107,9 @@ const sections = [
         <p className="mb-3">For questions about these Terms and Conditions, please contact us:</p>
         <ul className="list-none space-y-1 text-gray-500">
           <li><strong>Company:</strong> Avenue Fence and Decks</li>
-          <li><strong>Address:</strong> 123 Sunshine Blvd, New York, NY 10001</li>
-          <li><strong>Phone:</strong> (555) 123-4567</li>
-          <li><strong>Email:</strong> <a href="mailto:hello@avenue.com" className="text-pink-500 hover:text-pink-600">hello@avenue.com</a></li>
+          <li><strong>Address:</strong> 9950 County Rd, Clarence, Buffalo, NY</li>
+          <li><strong>Phone:</strong> (716) 466-1330</li>
+          <li><strong>Email:</strong> <a href="mailto:kdlandscapingny@gmail.com" className="text-pink-500 hover:text-pink-600">kdlandscapingny@gmail.com</a></li>
         </ul>
       </>
     ),

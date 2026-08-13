@@ -63,11 +63,12 @@ export default function App() {
 
             {/* Logo */}
             <button onClick={() => scrollTo('home')} className="flex items-center group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center shadow-md shadow-pink-200 group-hover:scale-110 transition-transform">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
+              <div className="h-12 w-12 rounded-full ring-2 ring-pink-200 shadow-md overflow-hidden group-hover:scale-110 transition-transform flex-shrink-0">
+                <img
+                  src="/logo.webp"
+                  alt="Avenue Fence and Decks"
+                  className="h-full w-full object-cover object-center"
+                />
               </div>
             </button>
 
@@ -173,12 +174,7 @@ export default function App() {
             {/* Brand */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center shadow-md shadow-pink-200">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                </div>
+                <img src="/logo.webp" alt="Avenue Fence and Decks" className="h-9 w-auto object-contain" />
                 <span className="font-extrabold text-gray-900 text-lg italic" style={{ fontFamily: 'Georgia,serif' }}>avenue</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -213,9 +209,9 @@ export default function App() {
             <div>
               <h4 className="text-gray-900 font-bold text-xs uppercase tracking-widest mb-4">Contact</h4>
               <ul className="space-y-2.5">
-                <li className="text-gray-400 text-sm">(555) 123-4567</li>
-                <li className="text-gray-400 text-sm">hello@avenue.com</li>
-                <li className="text-gray-400 text-sm">123 Sunshine Blvd, NY</li>
+                <li className="text-gray-400 text-sm">(716) 466-1330</li>
+                <li className="text-gray-400 text-sm">kdlandscapingny@gmail.com</li>
+                <li className="text-gray-400 text-sm">9950 County Rd, Clarence, Buffalo NY</li>
               </ul>
             </div>
 
