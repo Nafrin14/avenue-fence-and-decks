@@ -8,4 +8,14 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
+  build: {
+    cssCodeSplit: false,       // keep one CSS chunk so preload hint covers it all
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
 })
