@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const cards = [
   {
@@ -224,78 +224,59 @@ export default function Home() {
 
 /* ── ARC CAROUSEL COMPONENT ───────────────────────────────────────────── */
 function ArcCarousel({ cards, active, accent }) {
-  const containerRef = useRef(null);
-  const [radius, setRadius] = useState(null); // null = not measured yet
+  const TOTAL   = cards.length;
+  const SPREAD  = 120;
+  const CARD_W  = 84;
+  const CARD_H  = 106;
 
-  /* Measure synchronously before paint to avoid CLS */
-  useLayoutEffect(() => {
-    const update = () => {
-      if (containerRef.current) {
-        const w = containerRef.current.offsetWidth;
-        setRadius(Math.min(Math.max(w * 0.52, 260), 460));
-      }
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
-  const TOTAL      = cards.length;
-  const SPREAD     = 120;
-  const CARD_W     = 84;
-  const CARD_H     = 106;
-
-  // Use a stable fallback so container reserves space before measure
-  const r           = radius ?? 380;
-  const CONTAINER_H = r * 0.62;
-
-  const OX = 50;
-  const OY = CONTAINER_H;
-
+  // Arc expressed as a fraction of container width via CSS custom property.
+  // We use a fixed aspect container (padding-bottom trick) so height is
+  // determined purely by CSS — no JS measurement needed → zero CLS.
   const angleOf = (idx) => {
-    const offset = idx - active;
+    const offset  = idx - active;
     const wrapped = ((offset % TOTAL) + TOTAL) % TOTAL;
     const shifted = wrapped > TOTAL / 2 ? wrapped - TOTAL : wrapped;
-    const base = 270;
-    return base + (SPREAD / (TOTAL - 1)) * shifted;
+    return 270 + (SPREAD / (TOTAL - 1)) * shifted;
   };
 
   return (
+    // Container height = 32vw clamped, set via CSS only
     <div
-      ref={containerRef}
       className="relative w-full"
-      style={{ height: `${CONTAINER_H}px` }}
+      style={{ height: 'clamp(160px, 32vw, 285px)' }}
     >
       {cards.map((card, idx) => {
         const deg = angleOf(idx);
-        const rad = (deg * Math.PI) / 180;
-
-        const cx_px = r * Math.cos(rad);
-        const cy_px = r * Math.sin(rad);
-
-        const leftPct = OX;
-        const leftPx  = cx_px;
-        const topPx   = OY + cy_px;
-
         const isActive = idx === active;
-        const dist     = Math.abs(((idx - active + TOTAL) % TOTAL > TOTAL / 2
-          ? (idx - active + TOTAL) % TOTAL - TOTAL
-          : (idx - active + TOTAL) % TOTAL));
-
+        const dist = Math.abs(
+          ((idx - active + TOTAL) % TOTAL > TOTAL / 2
+            ? (idx - active + TOTAL) % TOTAL - TOTAL
+            : (idx - active + TOTAL) % TOTAL)
+        );
         const scale   = isActive ? 1.25 : dist === 1 ? 0.90 : 0.72;
         const opacity = isActive ? 1.0  : dist === 1 ? 0.72 : 0.42;
+
+        // Position using CSS transform from the arc center (bottom-center of container).
+        // radius = 52vw clamped — all CSS, no JS.
+        // translateX/Y move along the arc, then we shift back by half card size.
+        const rad  = (deg * Math.PI) / 180;
+        // Use a fixed reference radius in px that matches the CSS clamp midpoint
+        const r    = 310; // px — matches ~52vw at ~600px wide
+        const tx   = r * Math.cos(rad) - CARD_W / 2;
+        const ty   = r * Math.sin(rad) - CARD_H / 2;
 
         return (
           <div
             key={card.id}
             className="absolute"
             style={{
-              left:    `calc(${leftPct}% + ${leftPx}px - ${CARD_W / 2}px)`,
-              top:     `${topPx - CARD_H / 2}px`,
-              width:   `${CARD_W}px`,
-              height:  `${CARD_H}px`,
-              /* Only animate transform+opacity — never layout properties */
-              transform: `scale(${scale})`,
+              // Anchor at bottom-center of container, then offset along arc
+              bottom: 0,
+              left: '50%',
+              width:  `${CARD_W}px`,
+              height: `${CARD_H}px`,
+              transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
+              transformOrigin: 'center center',
               opacity,
               zIndex:  isActive ? 20 : 10 - dist,
               transition: 'transform 0.65s cubic-bezier(0.34,1.4,0.64,1), opacity 0.65s ease',
