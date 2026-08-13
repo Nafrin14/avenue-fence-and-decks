@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
 const cards = [
   {
@@ -180,7 +180,9 @@ export default function Home() {
               key={`img-${active}`}
               src={c.image}
               alt={c.title}
-              className="relative z-10 w-full h-48 md:h-60 object-cover rounded-2xl shadow-2xl shadow-black/60 animate-fadeIn"
+              width={320}
+              height={240}
+              className="relative z-10 w-full h-48 md:h-60 object-cover rounded-2xl shadow-2xl shadow-black/60"
               style={{ filter: `drop-shadow(0 0 24px ${c.accent}80)` }}
             />
           </div>
@@ -222,10 +224,10 @@ export default function Home() {
 /* ── ARC CAROUSEL COMPONENT ───────────────────────────────────────────── */
 function ArcCarousel({ cards, active, accent }) {
   const containerRef = useRef(null);
-  const [radius, setRadius] = useState(380);
+  const [radius, setRadius] = useState(null); // null = not measured yet
 
-  /* Make radius responsive */
-  useEffect(() => {
+  /* Measure synchronously before paint to avoid CLS */
+  useLayoutEffect(() => {
     const update = () => {
       if (containerRef.current) {
         const w = containerRef.current.offsetWidth;
@@ -238,22 +240,22 @@ function ArcCarousel({ cards, active, accent }) {
   }, []);
 
   const TOTAL      = cards.length;
-  const SPREAD     = 120;       // total arc degrees
+  const SPREAD     = 120;
   const CARD_W     = 84;
   const CARD_H     = 106;
-  const CONTAINER_H = radius * 0.62; // show only top part of circle
 
-  /* Circle center is at bottom of container */
-  const OX = 50;               // % from left
-  const OY = CONTAINER_H;      // px from top = bottom of container
+  // Use a stable fallback so container reserves space before measure
+  const r           = radius ?? 380;
+  const CONTAINER_H = r * 0.62;
 
-  /* angle for card[i]: spread around 270° so active sits at top of visible arc = bottom of circle = pointing up */
+  const OX = 50;
+  const OY = CONTAINER_H;
+
   const angleOf = (idx) => {
     const offset = idx - active;
-    /* wrap shortest path */
     const wrapped = ((offset % TOTAL) + TOTAL) % TOTAL;
     const shifted = wrapped > TOTAL / 2 ? wrapped - TOTAL : wrapped;
-    const base = 270; // top of circle (pointing up)
+    const base = 270;
     return base + (SPREAD / (TOTAL - 1)) * shifted;
   };
 
@@ -267,15 +269,12 @@ function ArcCarousel({ cards, active, accent }) {
         const deg = angleOf(idx);
         const rad = (deg * Math.PI) / 180;
 
-        /* Position of card center in px relative to (OX%, OY) */
-        const cx_px = radius * Math.cos(rad);
-        const cy_px = radius * Math.sin(rad);
+        const cx_px = r * Math.cos(rad);
+        const cy_px = r * Math.sin(rad);
 
-        /* Convert to absolute position inside container */
-        /* left = OX% + cx_px, top = OY + cy_px  (OY is at bottom, cy_px is negative going up) */
-        const leftPct = OX;          /* percentage */
-        const leftPx  = cx_px;       /* pixel offset */
-        const topPx   = OY + cy_px;  /* cy_px is negative for top positions */
+        const leftPct = OX;
+        const leftPx  = cx_px;
+        const topPx   = OY + cy_px;
 
         const isActive = idx === active;
         const dist     = Math.abs(((idx - active + TOTAL) % TOTAL > TOTAL / 2
@@ -294,10 +293,12 @@ function ArcCarousel({ cards, active, accent }) {
               top:     `${topPx - CARD_H / 2}px`,
               width:   `${CARD_W}px`,
               height:  `${CARD_H}px`,
+              /* Only animate transform+opacity — never layout properties */
               transform: `scale(${scale})`,
               opacity,
               zIndex:  isActive ? 20 : 10 - dist,
-              transition: 'all 0.65s cubic-bezier(0.34,1.4,0.64,1)',
+              transition: 'transform 0.65s cubic-bezier(0.34,1.4,0.64,1), opacity 0.65s ease',
+              willChange: 'transform, opacity',
             }}
           >
             <div
@@ -308,9 +309,13 @@ function ArcCarousel({ cards, active, accent }) {
               }}
             >
               <div className="relative w-full h-full">
-                <img src={card.image} alt={card.title}
-                  className="absolute inset-0 w-full h-full object-cover" />
-                {/* Only a subtle gradient overlay — NO text on cards */}
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  width={CARD_W}
+                  height={CARD_H}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
             </div>
