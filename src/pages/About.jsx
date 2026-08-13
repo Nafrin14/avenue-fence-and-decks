@@ -29,7 +29,7 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-pink-100">
             <img
-              src="/about_team_1786481775672.jpg"
+              src="/about_team_1786481775672.webp"
               alt="Avenue Team"
               className="w-full h-[360px] object-cover"
             />

@@ -4,7 +4,7 @@ const services = [
   {
     title: 'Custom Decks',
     description: 'Premium composite or natural wood decks designed for your lifestyle. Perfect for entertaining or quiet mornings.',
-    image: '/services_deck_1786481182671.jpg',
+    image: '/services_deck_1786481182671.webp',
     icon: '🪵',
     accent: '#7e22ce',
     accentLight: '#f3e8ff',
@@ -12,7 +12,7 @@ const services = [
   {
     title: 'Privacy Fencing',
     description: 'Robust and elegant fencing in vinyl, cedar, or modern metal — tailored to your property and style.',
-    image: '/services_fence_1786481230809.jpg',
+    image: '/services_fence_1786481230809.webp',
     icon: '🏡',
     accent: '#0369a1',
     accentLight: '#e0f2fe',
@@ -20,7 +20,7 @@ const services = [
   {
     title: 'Smart Lighting',
     description: 'Low-voltage LED systems integrated into your deck or fence. Control ambiance from your phone.',
-    image: '/services_lighting_1786481805892.jpg',
+    image: '/services_lighting_1786481805892.webp',
     icon: '✨',
     accent: '#92400e',
     accentLight: '#fef3c7',
@@ -28,7 +28,7 @@ const services = [
   {
     title: 'Gate Installation',
     description: 'Custom driveway and walkway gates built for security, curb appeal, and long-term durability.',
-    image: '/hero_fence_deck_1786481154195.jpg',
+    image: '/hero_fence_deck_1786481154195.webp',
     icon: '🚪',
     accent: '#b91c1c',
     accentLight: '#fee2e2',
@@ -36,7 +36,7 @@ const services = [
   {
     title: 'Pergolas & Arbors',
     description: 'Beautifully crafted shade structures that transform any yard into a relaxing outdoor retreat.',
-    image: '/about_team_1786481775672.jpg',
+    image: '/about_team_1786481775672.webp',
     icon: '🌿',
     accent: '#15803d',
     accentLight: '#dcfce7',
@@ -44,7 +44,7 @@ const services = [
   {
     title: 'Repairs & Staining',
     description: 'Restore and protect your existing deck or fence with expert repairs and professional staining.',
-    image: '/services_deck_1786481182671.jpg',
+    image: '/services_deck_1786481182671.webp',
     icon: '🔧',
     accent: '#c2410c',
     accentLight: '#ffedd5',
