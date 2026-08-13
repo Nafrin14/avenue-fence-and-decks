@@ -37,14 +37,14 @@ export default function Testimonials() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-pink-500 font-bold text-xs uppercase tracking-[0.3em] mb-3">Happy Clients</p>
+          <p className="text-pink-700 font-bold text-xs uppercase tracking-[0.3em] mb-3">Happy Clients</p>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-5 leading-tight">
             What They{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">
               Say
             </span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto font-medium text-base">
+          <p className="text-gray-600 max-w-xl mx-auto font-medium text-base">
             Don't just take our word for it.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function Testimonials() {
               className="bg-white border border-pink-100 rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-lg hover:shadow-pink-100 hover:-translate-y-1 transition-all duration-300"
             >
               <Stars count={t.rating} />
-              <p className="text-gray-500 text-sm font-medium leading-relaxed italic mt-4 flex-grow">
+              <p className="text-gray-700 text-sm font-medium leading-relaxed italic mt-4 flex-grow">
                 "{t.content}"
               </p>
               <div className="flex items-center gap-3 mt-6 pt-5 border-t border-pink-50">
@@ -66,7 +66,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="font-bold text-gray-900 text-sm">{t.name}</p>
-                  <p className="text-gray-400 text-xs">{t.role}</p>
+                  <p className="text-gray-600 text-xs">{t.role}</p>
                 </div>
               </div>
             </div>

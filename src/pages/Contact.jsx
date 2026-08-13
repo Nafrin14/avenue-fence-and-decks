@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const infoItems = [
   {
@@ -39,22 +39,40 @@ const infoItems = [
 ];
 
 export default function Contact() {
-  // Load GHL embed script
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  // Load GHL script + show iframe only when section scrolls into view
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
     if (document.querySelector('script[src="https://link.kdlead.com/js/form_embed.js"]')) return;
     const s = document.createElement('script');
     s.src = 'https://link.kdlead.com/js/form_embed.js';
     s.async = true;
     document.body.appendChild(s);
-  }, []);
+  }, [visible]);
 
   return (
-    <div className="py-24 px-4 md:px-10 bg-white">
+    <div ref={sectionRef} className="py-24 px-4 md:px-10 bg-white">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-pink-50 border border-pink-200 text-pink-500 font-bold text-xs uppercase tracking-[0.3em] px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-pink-50 border border-pink-200 text-pink-700 font-bold text-xs uppercase tracking-[0.3em] px-4 py-1.5 rounded-full mb-4">
             Get In Touch
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 leading-tight">
@@ -63,7 +81,7 @@ export default function Contact() {
               Beautiful
             </span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto text-base leading-relaxed">
+          <p className="text-gray-600 max-w-xl mx-auto text-base leading-relaxed">
             Ready to transform your outdoor space? Fill in the form and we'll get back to you within 24 hours.
           </p>
         </div>
@@ -81,9 +99,9 @@ export default function Contact() {
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-0.5">{item.label}</p>
+                  <p className="text-gray-600 text-xs font-bold uppercase tracking-wider mb-0.5">{item.label}</p>
                   <p className="text-gray-900 font-bold text-sm">{item.value}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">{item.sub}</p>
+                  <p className="text-gray-600 text-xs mt-0.5">{item.sub}</p>
                 </div>
               </div>
             ))}
@@ -108,24 +126,30 @@ export default function Contact() {
           </div>
 
           {/* Right: GHL iframe form */}
-          <div className="lg:col-span-3 bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-100 overflow-hidden">
-            <iframe
-              src="https://link.kdlead.com/widget/form/IyfhvN5cduj4G2rfJMmM"
-              id="inline-IyfhvN5cduj4G2rfJMmM"
-              data-layout='{"id":"INLINE"}'
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="Optin Claim"
-              data-height="763"
-              data-layout-iframe-id="inline-IyfhvN5cduj4G2rfJMmM"
-              data-form-id="IyfhvN5cduj4G2rfJMmM"
-              title="Optin Claim"
-              style={{ width: '100%', minHeight: '900px', height: 'auto', border: 'none', display: 'block' }}
-            />
+          <div className="lg:col-span-3 bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-100 overflow-hidden" style={{ minHeight: '900px' }}>
+            {visible ? (
+              <iframe
+                src="https://link.kdlead.com/widget/form/IyfhvN5cduj4G2rfJMmM"
+                id="inline-IyfhvN5cduj4G2rfJMmM"
+                data-layout='{"id":"INLINE"}'
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Optin Claim"
+                data-height="763"
+                data-layout-iframe-id="inline-IyfhvN5cduj4G2rfJMmM"
+                data-form-id="IyfhvN5cduj4G2rfJMmM"
+                title="Optin Claim"
+                style={{ width: '100%', minHeight: '900px', height: 'auto', border: 'none', display: 'block' }}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center" style={{ minHeight: '900px' }}>
+                <div className="w-8 h-8 rounded-full border-2 border-pink-200 border-t-pink-500 animate-spin" />
+              </div>
+            )}
           </div>
 
         </div>

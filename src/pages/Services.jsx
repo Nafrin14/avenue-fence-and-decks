@@ -6,7 +6,7 @@ const services = [
     description: 'Premium composite or natural wood decks designed for your lifestyle. Perfect for entertaining or quiet mornings.',
     image: '/services_deck_1786481182671.jpg',
     icon: '🪵',
-    accent: '#a855f7',
+    accent: '#7e22ce',
     accentLight: '#f3e8ff',
   },
   {
@@ -14,7 +14,7 @@ const services = [
     description: 'Robust and elegant fencing in vinyl, cedar, or modern metal — tailored to your property and style.',
     image: '/services_fence_1786481230809.jpg',
     icon: '🏡',
-    accent: '#0ea5e9',
+    accent: '#0369a1',
     accentLight: '#e0f2fe',
   },
   {
@@ -22,7 +22,7 @@ const services = [
     description: 'Low-voltage LED systems integrated into your deck or fence. Control ambiance from your phone.',
     image: '/services_lighting_1786481805892.jpg',
     icon: '✨',
-    accent: '#f59e0b',
+    accent: '#92400e',
     accentLight: '#fef3c7',
   },
   {
@@ -30,7 +30,7 @@ const services = [
     description: 'Custom driveway and walkway gates built for security, curb appeal, and long-term durability.',
     image: '/hero_fence_deck_1786481154195.jpg',
     icon: '🚪',
-    accent: '#ef4444',
+    accent: '#b91c1c',
     accentLight: '#fee2e2',
   },
   {
@@ -38,7 +38,7 @@ const services = [
     description: 'Beautifully crafted shade structures that transform any yard into a relaxing outdoor retreat.',
     image: '/about_team_1786481775672.jpg',
     icon: '🌿',
-    accent: '#22c55e',
+    accent: '#15803d',
     accentLight: '#dcfce7',
   },
   {
@@ -46,7 +46,7 @@ const services = [
     description: 'Restore and protect your existing deck or fence with expert repairs and professional staining.',
     image: '/services_deck_1786481182671.jpg',
     icon: '🔧',
-    accent: '#f97316',
+    accent: '#c2410c',
     accentLight: '#ffedd5',
   },
 ];
@@ -58,14 +58,14 @@ export default function Services() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-pink-500 font-bold text-xs uppercase tracking-[0.3em] mb-3">What We Build</p>
+          <p className="text-pink-700 font-bold text-xs uppercase tracking-[0.3em] mb-3">What We Build</p>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-5 leading-tight">
             Our{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">
               Services
             </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto font-medium text-base leading-relaxed">
+          <p className="text-gray-600 max-w-2xl mx-auto font-medium text-base leading-relaxed">
             Comprehensive outdoor solutions designed to enhance the beauty and value of your property.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function Services() {
               {/* Content */}
               <div className="p-5">
                 <h3 className="text-lg font-black text-gray-900 mb-2">{s.title}</h3>
-                <p className="text-gray-400 text-sm font-medium leading-relaxed mb-4">{s.description}</p>
+                <p className="text-gray-600 text-sm font-medium leading-relaxed mb-4">{s.description}</p>
                 <div
                   className="flex items-center gap-1.5 text-xs font-bold transition-colors"
                   style={{ color: s.accent }}

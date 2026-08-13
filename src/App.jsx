@@ -101,7 +101,12 @@ export default function App() {
             </button>
 
             {/* Mobile burger */}
-            <button className="md:hidden text-gray-500 hover:text-pink-500 p-1" onClick={() => setMenuOpen((o) => !o)}>
+            <button
+              className="md:hidden text-gray-500 hover:text-pink-500 p-1"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
               {menuOpen
                 ? <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 : <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -177,13 +182,13 @@ export default function App() {
                 <img src="/logo.webp" alt="Avenue Fence and Decks" className="h-9 w-auto object-contain" />
                 <span className="font-extrabold text-gray-900 text-lg italic" style={{ fontFamily: 'Georgia,serif' }}>avenue</span>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
                 Beautiful, durable fencing and custom deck solutions for your dream outdoor space.
               </p>
               <div className="flex gap-3 mt-5">
                 {[{ label: 'FB', title: 'Facebook' }, { label: 'IG', title: 'Instagram' }, { label: 'HZ', title: 'Houzz' }].map((s) => (
                   <a key={s.label} href="#" title={s.title}
-                    className="w-9 h-9 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-500 hover:border-pink-500 hover:text-white transition-all font-bold text-xs">
+                    className="w-9 h-9 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-pink-700 hover:bg-pink-500 hover:border-pink-500 hover:text-white transition-all font-bold text-xs">
                     {s.label}
                   </a>
                 ))}
@@ -192,12 +197,12 @@ export default function App() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-gray-900 font-bold text-xs uppercase tracking-widest mb-4">Quick Links</h4>
+              <p className="text-gray-900 font-bold text-xs uppercase tracking-widest mb-4">Quick Links</p>
               <ul className="space-y-2.5">
                 {navItems.map((item) => (
                   <li key={item.id}>
                     <button onClick={() => scrollTo(item.id)}
-                      className="text-gray-400 hover:text-pink-500 transition-colors text-sm font-medium">
+                      className="text-gray-600 hover:text-pink-500 transition-colors text-sm font-medium">
                       {item.label}
                     </button>
                   </li>
@@ -207,11 +212,11 @@ export default function App() {
 
             {/* Contact */}
             <div>
-              <h4 className="text-gray-900 font-bold text-xs uppercase tracking-widest mb-4">Contact</h4>
+              <p className="text-gray-900 font-bold text-xs uppercase tracking-widest mb-4">Contact</p>
               <ul className="space-y-2.5">
-                <li className="text-gray-400 text-sm">(716) 466-1330</li>
-                <li className="text-gray-400 text-sm">kdlandscapingny@gmail.com</li>
-                <li className="text-gray-400 text-sm">9950 County Rd, Clarence, Buffalo NY</li>
+                <li className="text-gray-600 text-sm">(716) 466-1330</li>
+                <li className="text-gray-600 text-sm">kdlandscapingny@gmail.com</li>
+                <li className="text-gray-600 text-sm">9950 County Rd, Clarence, Buffalo NY</li>
               </ul>
             </div>
 
@@ -219,11 +224,11 @@ export default function App() {
 
           {/* Bottom bar */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 border-t border-pink-50 pt-6">
-            <p className="text-gray-400 text-xs">© 2026 Avenue Fence and Decks. All rights reserved.</p>
+            <p className="text-gray-600 text-xs">© 2026 Avenue Fence and Decks. All rights reserved.</p>
             <div className="flex gap-4">
-              <button onClick={() => setModal('privacy')} className="text-gray-400 hover:text-pink-500 text-xs transition-colors">Privacy Policy</button>
-              <span className="text-gray-200">|</span>
-              <button onClick={() => setModal('terms')} className="text-gray-400 hover:text-pink-500 text-xs transition-colors">Terms of Service</button>
+              <button onClick={() => setModal('privacy')} className="text-gray-600 hover:text-pink-500 text-xs transition-colors">Privacy Policy</button>
+              <span className="text-gray-300">|</span>
+              <button onClick={() => setModal('terms')} className="text-gray-600 hover:text-pink-500 text-xs transition-colors">Terms of Service</button>
             </div>
           </div>
         </div>
