@@ -182,6 +182,7 @@ export default function Home() {
               alt={c.title}
               width={320}
               height={240}
+              fetchpriority={active === 0 ? 'high' : 'auto'}
               className="relative z-10 w-full h-48 md:h-60 object-cover rounded-2xl shadow-2xl shadow-black/60"
               style={{ filter: `drop-shadow(0 0 24px ${c.accent}80)` }}
             />
