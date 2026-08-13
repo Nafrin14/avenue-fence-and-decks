@@ -83,7 +83,7 @@ export default function App() {
                     className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200
                       ${isActive
                         ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md shadow-pink-200'
-                        : 'text-gray-500 hover:text-pink-600 hover:bg-white'
+                        : 'text-gray-700 hover:text-pink-600 hover:bg-white'
                       }`}
                   >
                     {item.label}
@@ -126,7 +126,7 @@ export default function App() {
                     className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-left
                       ${isActive
                         ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white'
-                        : 'text-gray-500 hover:text-pink-600 hover:bg-pink-50'
+                        : 'text-gray-700 hover:text-pink-600 hover:bg-pink-50'
                       }`}
                   >
                     {item.label}
